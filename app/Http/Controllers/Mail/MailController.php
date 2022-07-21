@@ -21,20 +21,7 @@ class MailController extends Controller
 
 
         $markdown = new Markdown(view(), config('mail.markdown'));
-
         return $markdown->render('emails.mailTemplate');
-        
-        $notification = (new \App\Notifications\InvoicePaid)->toMail('test@example.com');
-        $markdown = new \Illuminate\Mail\Markdown(view(), config('mail.markdown'));
-        return $markdown->render($notification->markdown, $notification->data());
-        // Mail::to($event->email)->send(new MailTemplate($event->details));
-
-
-        $markdown = new Markdown(view(), config('mail.markdown'));
-
-        return $markdown->render('emails.mailTemplate')->with('details', $details);
-
-
         return view('emails.mailTemplate')->with('details', $details);
         
         event(new SendMail($email, $details));

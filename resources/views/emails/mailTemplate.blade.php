@@ -2,19 +2,18 @@
 {{-- @component('mail::message') --}}
 {{-- # {{ $details['title'] }} --}}
   
-The body of your message. 
+{{-- {{ $details['content'] }} --}}
    
-@component('mail::button', ['url' => 'testUrl'])
+@component('mail::button', ['url' => 'https://google.com'])
 {{-- @component('mail::button', ['url' => $details['url']]) --}}
-Button Text
+Confirm
 @endcomponent
 
-Thanks,
+{{-- Thanks, --}}
 
-{{ config('app.name') }}
+{{-- {{ config('app.name') }} --}}
 
 @component('mail::footer')
-Test Foolter
 @endcomponent
 
 @endcomponent

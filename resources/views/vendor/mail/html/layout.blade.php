@@ -3,6 +3,10 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link href="http://fonts.cdnfonts.com/css/helvetica-neue-9" rel="stylesheet">
 </head>
 <body>
 <style>
@@ -32,7 +36,7 @@ width: 100% !important;
 <!-- Email Body -->
 <tr>
 <td class="body" width="100%" cellpadding="0" cellspacing="0">
-<table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+<table class="inner-body mt-4" style=" background-image: url('{{asset('images/background-image.png')}}'); " align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
 <!-- Body content -->
 <tr>
 <td class="content-cell">
@@ -46,7 +50,7 @@ width: 100% !important;
 </td>
 </tr>
 
-{{ $footer ?? '' }}
+{{-- {{ $footer ?? '' }} --}}
 </table>
 </td>
 </tr>
