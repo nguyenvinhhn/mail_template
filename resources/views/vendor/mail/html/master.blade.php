@@ -7,29 +7,27 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 <link href="http://fonts.cdnfonts.com/css/helvetica-neue-9" rel="stylesheet">
+<link href="{{ asset('css/mail/style.css') }}" rel="stylesheet">
 </head>
 <body>
 <style>
+
 @media only screen and (max-width: 600px) {
 .footer {
 width: 100% !important;
 }
 }
-.color-text {
-    color: rgb(111, 200, 69) !important;
-}
+
 @media only screen and (max-width: 500px) {
 .button {
 width: 100% !important;
 }
 }
 </style>
-
 <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
 <tr>
 <td align="center">
 <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
-{{-- {{ $header ?? '' }} --}}
 
 <!-- Email Body -->
 <tr>
@@ -42,13 +40,14 @@ width: 100% !important;
 {{ Illuminate\Mail\Markdown::parse($slot) }}
 
 {{ $subcopy ?? '' }}
+
+{{ $footer ?? '' }}
 </td>
 </tr>
 </table>
 </td>
 </tr>
 
-{{-- {{ $footer ?? '' }} --}}
 </table>
 </td>
 </tr>

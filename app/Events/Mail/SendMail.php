@@ -22,6 +22,7 @@ class SendMail
      *
      * @return void
      */
+  
     public function __construct($email, $details)
     {
         $this->email = $email;

@@ -21,5 +21,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('mail')->group(function() {
-    Route::get('send','Mail\MailController@send');
+    Route::get('/','Mail\MailController@mailTemplate');
+    Route::post('send','Mail\MailController@sendMail')->name('sendMail');
 });

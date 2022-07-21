@@ -11,5 +11,13 @@
 </tr> --}}
 
 <div class="header-box">
-    <h1>is this header</h1>
+    <a href="#" class="header-logo">
+        <img src="{{ asset('images/logo.png') }}" alt="">
+    </a>
+    <div class="bitcoin-logo">
+        <img src="{{ asset('images/bitcoin-logo.png') }}" alt="">
+    </div>
+    <div class="hero">
+        <img src="{{ asset('images/hero-bg.png') }}" alt="">
+    </div>
 </div>

@@ -1,18 +1,31 @@
-@component('mail::layout')
+@component('vendor.mail.html.master')
 {{-- Header --}}
 @slot('header')
-@component('mail::header', ['url' => config('app.url')])
+@component('vendor.mail.html.header', ['url' => config('app.url')])
 {{ config('app.name') }}
 @endcomponent
 @endslot
 
 {{-- Body --}}
 
-<div class="form-content">
-    <textarea id="mail-content" name="mail-content" rows="4" cols="50">
-    At w3schools.com you will learn how to make a website. 
-    </textarea>
-</div>
+
+
+<form method="POST" action="{{ route('sendMail') }}">
+    @csrf
+    <div class="form-content">
+        <textarea name="content" rows="4" cols="50">
+        At w3schools.com you will learn how to make a website. 
+        </textarea>
+    </div>
+    <div class="button-box">
+        <button type="submit" class="button button-primary">
+            Send Mail
+        </button>
+    </div>
+    </div>
+</form>
+
+
 
 <div class="box-content">
     Hi Nguyen, 
@@ -29,20 +42,20 @@ We appreciate your time and thank you for helping us improve FUINRE
 Cheers,
 Ngoc Hai, Product Manager
 </div>
-{{ $slot }}
+{{ $slot ?? '' }}
 
 {{-- Subcopy --}}
 @isset($subcopy)
 @slot('subcopy')
-@component('mail::subcopy')
-{{ $subcopy }}
+@component('vendor.mail.html.subcopy')
+{{ $subcopy ?? '' }}
 @endcomponent
 @endslot
 @endisset
 
 {{-- Footer --}}
 @slot('footer')
-@component('mail::footer')
+@component('vendor.mail.html.footer')
 {{-- © {{ date('Y') }} {{ config('app.name') }}. @lang('All rights reserved.') --}}
 @endcomponent
 @endslot
