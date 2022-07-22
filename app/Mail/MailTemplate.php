@@ -30,7 +30,6 @@ class MailTemplate extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.mailTemplate')
-                    ->with('details', $this->details);
+        return $this->markdown('vendor.mail.html.message')->with('details', $this->details);
     }
 }

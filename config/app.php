@@ -56,6 +56,11 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    'url_instagram' => env('URL_INSTAGRAM', 'https://instagram.com'),
+    'url_twitte' => env('URL_TWITTE', 'https://twitte.com'),
+    'url_facebook' => env('URL_FACEBOOK', 'https://facebook.com'),
+    'url_linkedin' => env('URL_LINKDEN', 'https://linkedin.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

@@ -29,7 +29,15 @@ class HandleSendMail implements ShouldQueue
      */
     public function handle(SendMail $event)
     {
-        Mail::to($event->email)->send(new MailTemplate($event->details));
+        // Mail::to($event->email)->send(new MailTemplate($event->details));
+        $email = $event->email;
+        $body = new MailTemplate($event->details);
+        Mail::send([], [], function ($message) use ($email, $body) { 
+            $message->from(getenv('MAIL_FROM_ADDRESS'), 'vinhTest@gmail.com'); 
+            $message->to($email); 
+            $message->subject("[VINH] Test Event"); 
+            $message->setBody($body, 'text/html'); 
+        }); 
     }
 
 }

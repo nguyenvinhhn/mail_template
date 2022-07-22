@@ -2,20 +2,31 @@
 {{-- Header --}}
 @slot('header')
 @component('vendor.mail.html.header', ['url' => config('app.url')])
-{{ config('app.name') }}
+{{-- {{ config('app.name') }} --}}
 @endcomponent
 @endslot
 
 {{-- Body --}}
-
-
-
-<form method="POST" action="{{ route('sendMail') }}">
+<form name="myForm" method="POST" action="{{ route('sendMail') }}"  onsubmit="return validateForm()">
+    <div class="form-content">
+        @if(session()->has('message'))
+        <div class="button-success alert">
+            {{ session()->get('message') }}
+        </div>
+        @endif
+    </div>
     @csrf
     <div class="form-content">
-        <textarea name="content" rows="4" cols="50">
-        At w3schools.com you will learn how to make a website. 
-        </textarea>
+        <input type="text" name="email" placeholder="Enter email...">
+        @error('email')
+        <p class="text-danger">{{$errors->first('email')}}</p>
+        @enderror
+    </div>
+    <div class="form-content">
+        <textarea placeholder="Enter content email..." name="content" rows="4" cols="50"></textarea>
+        @error('content')
+        <p class="text-danger">{{$errors->first('content')}}</p>
+        @enderror
     </div>
     <div class="button-box">
         <button type="submit" class="button button-primary">
@@ -24,25 +35,6 @@
     </div>
     </div>
 </form>
-
-
-
-<div class="box-content">
-    Hi Nguyen, 
-
-I hope you are having fun using FUINRE!
-
-As we are continuously improving and adding new features to FUINRE, your feedback/suggestions will help us understand the challenges and opportunities you face so we can priorities the tools and services that will help you best.
-
-This survey should take less than 5 minutes to complete and your responses will be kept confidential. 
-
-We appreciate your time and thank you for helping us improve FUINRE
-.
-
-Cheers,
-Ngoc Hai, Product Manager
-</div>
-{{ $slot ?? '' }}
 
 {{-- Subcopy --}}
 @isset($subcopy)

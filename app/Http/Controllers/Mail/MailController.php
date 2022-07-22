@@ -4,46 +4,44 @@ namespace App\Http\Controllers\Mail;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Markdown;
+use Validator;
 
 use App\Events\Mail\SendMail;
-
 use App\Mail\MailTemplate;
-use App\Mail\MailNotify;
-use Mail;
-
 
 class MailController extends Controller
 {
     public function mailTemplate() {
-
         return view('vendor.mail.html.create');
-        $email = 'test_email@gmail.com';
-        
-        $details = [
-            'title' => 'Mail Test from Nicesnippets.com',
-            'url' => 'https://www.nicesnippets.com',
-            'content' => $request->content,
-        ];
-
-        $markdown = new Markdown(view(), config('mail.markdown'));
-        return $markdown->render('emails.mailTemplate');
-        return view('emails.mailTemplate')->with('details', $details);
-        
-        event(new SendMail($email, $details));
-        dd("Mail Send Successfully");
     }
 
     public function sendMail(Request $request) {
-        $email = 'nguyenvinasdfh.hn.dev@gmail.com';
-        $details = [
-            'title' => 'Mail Test from Nicesnippets.com',
-            'url' => 'https://www.nicesnippets.com',
-            'content' => $request->content,
-        ];
 
-        event(new SendMail($email, $details));
-        dd('thanh cong');
+        $data = $request->only('email', 'content');
+        $validator =  $this->isValidator($data);
+        if ($validator->fails()) {
+            $errors = $validator->messages();
+            return redirect('mail')->withErrors($errors);
+
+        } else {
+            $details = [
+                'title' => 'Mail Test from Nicesnippets.com',
+                'content' => $request->content,
+                'url_confirm' => config('app.url').'/survey',
+            ];
+            event(new SendMail($request->email, $details));
+            return redirect()->back()->with('message', 'Send Mail Success!');
+        }
+    }
+
+    /**
+     * @param array $data
+     */
+    protected function isValidator(array $data) {
+        return Validator::make($data, [
+            'email' => ['required','email'],
+            'content' => ['required'],
+        ]);
     }
     
 }

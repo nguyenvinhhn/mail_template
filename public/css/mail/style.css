@@ -124,6 +124,11 @@ img {
     left: 0 !important;
     bottom: 0 !important;
 }
+.header-box .connections  {
+    position: absolute !important;
+    left: 90px !important;
+    top: 222px !important;
+}
 
 .header {
     padding: 25px 0;
@@ -156,8 +161,16 @@ img {
     width: 100%;
 }
 
-.test-data {
-    color: red;
+.text-danger {
+    color: #dc3545 !important;
+}
+.text-success {
+    color: #28a745 !important;
+}
+.alert {
+    color: white !important;
+    text-align: center;
+    font-weight: 500;
 }
 
 /* Box Content */
@@ -172,13 +185,26 @@ img {
 .form-content {
     padding: 30px 50px 0px 50px;
 }
-.form-content textarea{
+.form-content textarea {
     color: white;
     background-color: #091450;
     width: 100%;
     height: 400px;
     max-width: 493px;
+    border: 0.5px solid gray;
+    border-radius: 2px;
 }
+.form-content input{
+    padding-bottom: 5px;
+    color: white;
+    background-color: #091450;
+    width: 100%;
+    height: 30px;
+    max-width: 493px;
+    border: 0.5px solid gray;
+    border-radius: 2px;
+}
+
 .inner-body {
     background-position: center;
     background-size: cover;
@@ -356,6 +382,7 @@ img {
 .button-box {
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* Panels */

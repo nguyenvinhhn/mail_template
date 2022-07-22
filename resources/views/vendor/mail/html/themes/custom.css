@@ -121,6 +121,11 @@ img {
     left: 0 !important;
     bottom: 0 !important;
 }
+.header-box .connections  {
+    position: absolute !important;
+    left: 90px !important;
+    top: 222px !important;
+}
 
 .header {
     padding: 25px 0;
@@ -224,7 +229,6 @@ img {
     text-align: center;
     padding: 10px 20px;
 }
-
 
 .footer-address {
     display: flex;
@@ -351,6 +355,24 @@ img {
     border-right: 18px solid #e53e3e;
     border-top: 8px solid #e53e3e;
 }
+.btn-confirm {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/* Text Color */
+.text-danger {
+    color: #dc3545 !important;
+}
+.text-success {
+    color: #28a745 !important;
+}
+.alert {
+    color: white !important;
+    text-align: center;
+    font-weight: 500;
+}
+
 
 /* Panels */
 
